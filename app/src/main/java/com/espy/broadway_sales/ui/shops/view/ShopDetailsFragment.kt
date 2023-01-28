@@ -9,6 +9,8 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -124,12 +126,15 @@ class ShopDetailsFragment :
     private fun populateShopDetails(data: Shop?) {
         data?.run {
             binding.apply {
-                Glide
-                    .with(requireContext())
-                    .load(AppSettings.endPoints.IMAGE_ASSETS + data.shop_image)
-                    .placeholder(R.drawable.placeholder)
-                    .error(R.drawable.placeholder)
-                    .into(shopImg)
+                try {
+                    Glide
+                        .with(requireContext())
+                        .load(AppSettings.endPoints.IMAGE_ASSETS + data.shop_image)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.placeholder)
+                        .into(shopImg)
+                } catch (e: Exception) {
+                }
 
                 shopName.text = shop_name
 
@@ -209,7 +214,7 @@ class ShopDetailsFragment :
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.addenquirydialogsview)
         val title = dialog.findViewById(R.id.title) as TextView
-        title.text = "Add Enquiry"
+        title.text = "Create Appointment"
         val tv_close = dialog.findViewById(R.id.tv_close) as TextView
 
         //views
@@ -227,20 +232,37 @@ class ShopDetailsFragment :
 
         val edt_notes = dialog.findViewById(R.id.edt_notes) as EditText
 
+        val rgMeetingStatus = dialog.findViewById(R.id.rgMeetingStatus) as RadioGroup
+
+        var status = "1"
+
+        rgMeetingStatus.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.rb1 -> status = "1"
+                R.id.rb2 -> status = "2"
+                R.id.rb3 -> status = "3"
+            }
+        }
+
+
         val btnSubmit = dialog.findViewById(R.id.btnSubmit) as Button
 
 
         btnSubmit.setOnClickListener {
 //validation
-            if (edt_destination.text.trim().toString().isEmpty()) {
+            /*if (edt_destination.text.trim().toString().isEmpty()) {
                 makeToast("Enter Destination")
-            } else if (edt_date_of_travel.text.trim().toString().isEmpty()) {
-                makeToast("Select date of travel")
-            } else if (edt_comment.text.trim().toString().isEmpty()) {
+            } else */
+            if (edt_date_of_travel.text.trim().toString().isEmpty()) {
+                makeToast("Select next meeting date")
+            }
+            /*else if (edt_comment.text.trim().toString().isEmpty()) {
                 makeToast("Enter comment")
-            } else if (edt_adult.text.trim().toString().isEmpty()) {
-                makeToast("Enter adult count")
-            } else if (edt_child.text.trim().toString().isEmpty()) {
+            }*/
+            else if (edt_adult.text.trim().toString().isEmpty()) {
+                makeToast("Enter product")
+            }
+            /*else if (edt_child.text.trim().toString().isEmpty()) {
                 makeToast("Enter child count")
             } else if (edt_duration.text.trim().toString().isEmpty()) {
                 makeToast("Enter duration")
@@ -248,29 +270,25 @@ class ShopDetailsFragment :
                 makeToast("Enter Amount")
             } else if (edt_reminder_date.text.trim().toString().isEmpty()) {
                 makeToast("select Reminder date")
-            } else if (edt_notes.text.trim().toString().isEmpty()) {
-                makeToast("Enter notes")
+            } */
+            else if (edt_notes.text.trim().toString().isEmpty()) {
+                makeToast("Enter Description")
             } else {
                 //api call
                 var shopId=args.shop?.id ?: "0"
-                viewModel.postEnquiry(
+                viewModel.postAppointment(
                     AppPreferences.shopInId,
-                    edt_destination.text.trim().toString(),
                     edt_date_of_travel.text.trim().toString(),
-                    edt_comment.text.trim().toString(),
                     edt_adult.text.trim().toString(),
-                    edt_child.text.trim().toString(),
-                    edt_duration.text.trim().toString(),
-                    edt_quotation_amt.text.trim().toString(),
-                    edt_reminder_date.text.trim().toString(),
+                    status,
                     edt_notes.text.trim().toString()
                 )
                 viewModel.addenqsResponse.observe(viewLifecycleOwner) {
                     if (it != null) {
                         if (it == true) {
-                            makeToast("Enquiry added successfully")
+                            makeToast("Appointment created successfully!")
                         } else {
-                            makeToast("Enquiry added failed")
+                            makeToast("Appointment creation failed!")
                         }
                     }
 

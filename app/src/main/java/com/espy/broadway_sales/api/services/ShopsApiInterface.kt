@@ -120,6 +120,9 @@ interface ShopsApiInterface {
     @POST(HttpEndPoints.ROOH_ADD_ENQUIRY)
     fun addEnquiryAsync(@Body request: AddEnquiryDataRequest): Deferred<AddEnquiryResp>
 
+    @POST(HttpEndPoints.ROOH_ADD_ENQUIRY)
+    fun addAppoinmentAsync(@Body request: CreateAppointmentDataRequest): Deferred<AddEnquiryResp>
+
     //agency list
     @POST(HttpEndPoints.ROOH_ENQUIRY_AGENCY_LIST)
     fun getEnquiryAgencyListAsync(

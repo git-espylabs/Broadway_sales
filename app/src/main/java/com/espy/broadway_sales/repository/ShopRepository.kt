@@ -363,6 +363,25 @@ class ShopRepository: BaseRepository() {
             }
         }.flowOn(Dispatchers.IO)
     }
+    fun addAppointment(request: CreateAppointmentDataRequest): Flow<Boolean> {
+        //val jsonString = Gson().toJson(request)
+        return flow {
+            try {
+                val response = RestServiceProvider
+                    .getShopService()
+                    .addAppoinmentAsync(request)
+                    .await()
+
+                if (response.isError.not()) {
+                    emit(true)
+                } else {
+                    emit(false)
+                }
+            } catch (e: Exception) {
+                emit(false)
+            }
+        }.flowOn(Dispatchers.IO)
+    }
 
     suspend fun getEnquiryAgencyList(fromDate: String, toDate: String): Result<List<EnquiryAgencyItem>> {
         return try {
@@ -409,7 +428,7 @@ class ShopRepository: BaseRepository() {
         return try {
             val response = RestServiceProvider
                 .getShopService()
-                .followupEnquiryAsync(FollowupEnquiryRequest(agency_id, enquiry_id, followup_date, confirm_chance, amendment_replied_date, notes))
+                .followupEnquiryAsync(FollowupEnquiryRequest(agency_id, enquiry_id, followup_date, confirm_chance, notes))
                 .await()
 
             if (response.data != 0){

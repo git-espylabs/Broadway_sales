@@ -11,8 +11,8 @@ data class FollowupEnquiryRequest(
     var followup_date: String = "",
     @SerializedName("confirm_chance")
     var confirm_chance: String = "",
-    @SerializedName("amendment_replied_date")
-    var amendment_replied_date: String = "",
+    /*@SerializedName("amendment_replied_date")
+    var amendment_replied_date: String = "",*/
     @SerializedName("notes")
     var notes: String = ""
 )

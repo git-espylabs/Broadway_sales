@@ -3,6 +3,7 @@ package com.espy.broadway_sales.ui.profile.view
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import com.espy.broadway_sales.BuildConfig
 import com.espy.broadway_sales.R
 import com.espy.broadway_sales.api.Result
 import com.espy.broadway_sales.databinding.FragmentLoginBinding
@@ -31,12 +32,12 @@ class LoginFragment:
             viewParent = this@LoginFragment
         }
 
-        /*if (BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG){
             binding.apply {
-                etUsername.setText("sabeesh@gmail.com")
-                etPassword.setText("sabe010")
+                etUsername.setText("developer@gmail.com")
+                etPassword.setText("developer@123")
             }
-        }*/
+        }
 
         setObservers()
     }

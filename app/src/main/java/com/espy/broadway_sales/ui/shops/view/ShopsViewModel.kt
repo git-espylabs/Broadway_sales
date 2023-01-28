@@ -288,6 +288,27 @@ class ShopsViewModel : BaseViewModel() {
         }
     }
 
+    fun postAppointment(agencyId: String,
+                    dateoftravel: String?,
+                    adult:String?,
+                    child:String?,
+                    notes:String?){
+        val addenqRequest = CreateAppointmentDataRequest(
+            agencyId,
+            AppPreferences.userId,
+            dateoftravel?:"0",
+            adult?:"0",
+            notes?:"0",
+            child?:"0"
+        )
+        viewModelScope.launch {
+            shopRepository.addAppointment(addenqRequest).collect {
+                _addenqResponse.value = it
+            }
+        }
+    }
+
+
 
     fun getEnquiryAgencyList(fromDate: String, toDate: String){
         viewModelScope.launch {

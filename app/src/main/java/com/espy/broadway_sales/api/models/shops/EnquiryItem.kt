@@ -30,4 +30,15 @@ data class EnquiryItem(
     var agency_name: String? = "",
     @SerialName("enquiry_id")
     var enquiry_id: String? = "",
+
+
+
+    @SerialName("next_meet_date")
+    var next_meet_date: String? = "",
+    @SerialName("product")
+    var product: String? = "",
+    @SerialName("description")
+    var description: String? = "",
+    @SerialName("meeting_status")
+    var meeting_status: String? = ""
 ): Parcelable

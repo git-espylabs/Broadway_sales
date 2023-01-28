@@ -83,7 +83,9 @@ class OrderHistoryActivity : BaseActivity<ActivityOrderHostoryBinding>(
         destination: NavDestination,
         arguments: Bundle?
     ) {
-
+        if (destination.id == R.id.deliveryShopFragment){
+            setToolBarProperties(getString(R.string.order_history), false)
+        }
     }
 
 

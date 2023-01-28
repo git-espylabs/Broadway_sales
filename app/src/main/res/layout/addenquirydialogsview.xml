@@ -21,7 +21,7 @@
             android:gravity="center"
             android:padding="5dp"
             android:paddingVertical="5dp"
-            android:text="Add Enquiry"
+            android:text="Create Appointment"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,10 +69,7 @@
             android:paddingBottom="5dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="visible"
-
-
-            />
+            android:visibility="gone"/>
 
         <TextView
             app:layout_constraintTop_toBottomOf="@+id/edt_destination"
@@ -82,7 +79,7 @@
             android:background="@drawable/bg_edittext"
             android:fontFamily="@font/avenir_medium"
             android:gravity="center|left"
-            android:hint="Date of travel"
+            android:hint="Next Meeting Date"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:paddingLeft="9dp"
@@ -92,36 +89,10 @@
             android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="visible"
-
-
-            />
+            android:visibility="visible"/>
 
         <EditText
             app:layout_constraintTop_toBottomOf="@+id/edt_date_of_travel"
-            android:id="@+id/edt_comment"
-            android:layout_width="match_parent"
-            android:layout_height="41dp"
-            android:background="@drawable/bg_edittext"
-            android:fontFamily="@font/avenir_medium"
-            android:gravity="center|left"
-            android:hint="Comment"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            android:paddingLeft="9dp"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="5dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:visibility="visible"
-
-
-            />
-
-        <EditText
-            app:layout_constraintTop_toBottomOf="@+id/edt_comment"
             android:id="@+id/edt_adult"
             android:layout_width="match_parent"
             android:layout_height="41dp"
@@ -129,19 +100,35 @@
             android:background="@drawable/bg_edittext"
             android:fontFamily="@font/avenir_medium"
             android:gravity="center|left"
-            android:hint="Adult"
+            android:hint="Product"
             android:imeOptions="actionNext"
-            android:inputType="number"
+            android:inputType="text"
             android:paddingLeft="9dp"
             android:paddingTop="5dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="visible"
+            android:visibility="visible"/>
 
-
-            />
+        <EditText
+            app:layout_constraintTop_toBottomOf="@+id/edt_adult"
+            android:id="@+id/edt_comment"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="@drawable/bg_edittext"
+            android:fontFamily="@font/avenir_medium"
+            android:gravity="center|left"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:paddingLeft="9dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="gone"/>
 
         <EditText
             app:layout_constraintTop_toBottomOf="@+id/edt_adult"
@@ -161,10 +148,7 @@
             android:paddingBottom="5dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="visible"
-
-
-            />
+            android:visibility="gone"/>
 
         <EditText
             app:layout_constraintTop_toBottomOf="@+id/edt_child"
@@ -184,10 +168,7 @@
             android:paddingBottom="5dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="visible"
-
-
-            />
+            android:visibility="gone"/>
 
         <EditText
             app:layout_constraintTop_toBottomOf="@+id/edt_duration"
@@ -207,10 +188,7 @@
             android:paddingBottom="5dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="visible"
-
-
-            />
+            android:visibility="gone"/>
 
         <TextView
             app:layout_constraintTop_toBottomOf="@+id/edt_quotation_amt"
@@ -230,10 +208,7 @@
             android:paddingBottom="5dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="visible"
-
-
-            />
+            android:visibility="gone"/>
 
         <EditText
             app:layout_constraintTop_toBottomOf="@+id/edt_reminder_date"
@@ -244,7 +219,7 @@
             android:background="@drawable/bg_edittext"
             android:fontFamily="@font/avenir_medium"
             android:gravity="top|left"
-            android:hint="Notes"
+            android:hint="Description"
             android:imeOptions="actionNext"
             android:inputType="text"
             android:paddingLeft="9dp"
@@ -256,10 +231,56 @@
             android:paddingBottom="5dp"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:visibility="visible"
+            android:visibility="visible"/>
 
+        <TextView
+            app:layout_constraintTop_toBottomOf="@+id/edt_notes"
+            android:id="@+id/promptRg"
+            android:layout_marginTop="24dp"
+            android:text="Meeting Status:"
+            android:textSize="18sp"
+            android:fontFamily="@font/avenir_medium"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-            />
+        <RadioGroup
+            app:layout_constraintTop_toBottomOf="@+id/promptRg"
+            android:id="@+id/rgMeetingStatus"
+            android:layout_marginTop="7dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:checked="true"
+                android:text="Warm"
+                android:id="@+id/rb1"
+                android:textSize="18sp"
+                android:fontFamily="@font/avenir_book"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioButton
+                android:text="Hot"
+                android:id="@+id/rb2"
+                android:textSize="18sp"
+                android:fontFamily="@font/avenir_book"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RadioButton
+                android:text="Cold"
+                android:id="@+id/rb3"
+                android:textSize="18sp"
+                android:fontFamily="@font/avenir_book"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RadioGroup>
 
         <Button
             android:id="@+id/btnSubmit"
@@ -269,17 +290,13 @@
             android:layout_height="49dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:padding="14dp"
             android:textSize="16sp"
             android:textAllCaps="true"
-
-
             android:text="Submit"
             android:fontFamily="@font/avenir_medium"
-
-
-            app:layout_constraintTop_toBottomOf="@+id/edt_notes"/>
+            app:layout_constraintTop_toBottomOf="@+id/rgMeetingStatus"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

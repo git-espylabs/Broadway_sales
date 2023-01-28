@@ -43,16 +43,23 @@ class SettleOrderFragment:
         binding.apply {
             viewModel = shopsViewModel
 
-            dot.text = "Date Of Travel: " + CommonUtils.getConvertedDate2(args.pendingorder?.date_of_travel?:"") + ", "
-            destiny.text = "Destination: " + args.pendingorder?.destination
-            tvComt.text = "Comment: " + args.pendingorder?.comment
-            tvAdultCount.text = "Adults: " + args.pendingorder?.adult + ", "
-            tvAChildCount.text = "Children: " + args.pendingorder?.child + ", "
-            tvDuration.text = "Duration: " + args.pendingorder?.duration
-            tvQuotation.text = "Quotation: " + args.pendingorder?.quotation_amount + ", "
-            tvReminder.text = "Reminder On: " + CommonUtils.getConvertedDate2(args.pendingorder?.reminder_date?:"")
-            tvNotes.text = "Notes: " + args.pendingorder?.notes
+            dot.text = "Next Meeting Date: " + CommonUtils.getConvertedDate2(args.pendingorder?.next_meet_date?:"") + ", "
+//            destiny.text = "Destination: " + args.pendingorder?.destination
+//            tvComt.text = "Comment: " + args.pendingorder?.comment
+            tvAdultCount.text = "Product: " + args.pendingorder?.product
+//            tvAChildCount.text = "Children: " + args.pendingorder?.child + ", "
+//            tvDuration.text = "Duration: " + args.pendingorder?.duration
+//            tvQuotation.text = "Quotation: " + args.pendingorder?.quotation_amount + ", "
+//            tvReminder.text = "Reminder On: " + CommonUtils.getConvertedDate2(args.pendingorder?.reminder_date?:"")
+            tvNotes.text = "Description: " + args.pendingorder?.description
             tvReceiveDate.text = "Receive On: " + CommonUtils.getConvertedDate2(args.pendingorder?.recieve_date?:"")
+
+            when(args.pendingorder?.meeting_status){
+                "1" -> tvStatus.text = "Meeting Status: Warm"
+                "2" -> tvStatus.text = "Meeting Status: Hot"
+                "3" -> tvStatus.text = "Meeting Status: Cold"
+                else -> tvStatus.text = "Meeting Status: Not Available"
+            }
 
             followupDate.also {
                 it.text = SimpleDateFormat(DATE_FORMAT, Locale.US).format(Calendar.getInstance().time)
@@ -86,7 +93,7 @@ class SettleOrderFragment:
                     args.pendingorder?.enquiry_id?:"0",
                     selectedDateFollowUp,
                     confirmationStatus,
-                    selectedDateAmmend,
+                    "",
                     notes
                 )
             }

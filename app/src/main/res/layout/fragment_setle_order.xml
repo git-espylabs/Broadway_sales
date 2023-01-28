@@ -34,6 +34,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/destiny"
                 android:layout_marginTop="7dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +46,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tvComt"
                 android:layout_marginTop="7dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +69,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tvAChildCount"
                 android:layout_marginTop="7dp"
                 android:layout_marginStart="8dp"
@@ -79,6 +82,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tvDuration"
                 android:layout_marginTop="7dp"
                 android:layout_marginStart="8dp"
@@ -91,6 +95,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tvQuotation"
                 android:layout_marginTop="7dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -102,6 +107,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tvReminder"
                 android:layout_marginTop="7dp"
                 android:layout_marginStart="8dp"
@@ -115,12 +121,12 @@
 
             <TextView
                 android:id="@+id/tvReceiveDate"
-                android:layout_marginStart="5dp"
-                app:layout_constraintStart_toEndOf="@+id/dot"
+                android:layout_marginTop="7dp"
+                app:layout_constraintStart_toStartOf="parent"
                 android:textColor="@color/black"
                 android:text="Receive On: "
                 android:fontFamily="@font/avenir_medium"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAdultCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -129,16 +135,27 @@
                 android:layout_marginTop="7dp"
                 app:layout_constraintStart_toStartOf="parent"
                 android:textColor="@color/black"
-                android:text="Notes: "
+                android:text="Description: "
                 android:fontFamily="@font/avenir_medium"
-                app:layout_constraintTop_toBottomOf="@+id/tvReminder"
+                app:layout_constraintTop_toBottomOf="@+id/tvReceiveDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_marginTop="7dp"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/black"
+                android:text="Status: "
+                android:fontFamily="@font/avenir_medium"
+                app:layout_constraintTop_toBottomOf="@+id/tvNotes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <View
                 android:id="@+id/sep1"
                 android:layout_marginTop="12dp"
-                app:layout_constraintTop_toBottomOf="@+id/tvNotes"
+                app:layout_constraintTop_toBottomOf="@+id/tvStatus"
                 android:layout_width="match_parent"
                 android:background="@color/grey_100"
                 android:layout_height="1dp"/>
@@ -177,6 +194,7 @@
 
             <TextView
                 android:id="@+id/tv2"
+                android:visibility="gone"
                 app:layout_constraintTop_toTopOf="@+id/ammendDate"
                 app:layout_constraintBottom_toBottomOf="@+id/ammendDate"
                 app:layout_constraintStart_toStartOf="parent"
@@ -191,6 +209,7 @@
                 android:id="@+id/ammendDate"
                 android:layout_marginTop="16dp"
                 android:hint="Amendment Date"
+                android:visibility="gone"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:fontFamily="@font/avenir_medium"
