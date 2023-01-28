@@ -75,7 +75,11 @@ class SyncFragment:
         }
 
         syncViewModel.shopsCount.observe(viewLifecycleOwner) {
-            binding.shpCount.text = "$it Agencies Downloaded"
+            if (it > 0) {
+                binding.shpCount.text = "$it Customers Downloaded"
+            } else {
+                binding.shpCount.text = "No Customers Downloaded"
+            }
         }
 
         syncViewModel.productsCount.observe(viewLifecycleOwner) {
