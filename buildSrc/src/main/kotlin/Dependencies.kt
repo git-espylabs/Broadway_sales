@@ -2,8 +2,8 @@
 object BuildConfig {
 
     const val APPLICATION_ID = "com.espy.broadway_sales"
-    const val VERSION_CODE = 6
-    const val VERSION_NAME = "1.5"
+    const val VERSION_CODE = 7
+    const val VERSION_NAME = "1.6"
 
     const val COMPILE_SDK_VERSION = 30
     const val TARGET_SDK_VERSION = 30
